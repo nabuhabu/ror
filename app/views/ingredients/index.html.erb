@@ -1,0 +1,7 @@
+<h1> All our ingredients </h1>
+<% @ingredient.each do |ingredient| %>
+  <div class="alert alert-light">
+    <h3><%= ingredient.title %></h3>
+    <%= link_to "Read more", ingredient_path(ingredient), :class=>'btn btn-outline-primary' %>
+  </div>
+<% end %>

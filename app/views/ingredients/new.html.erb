@@ -1,0 +1,23 @@
+<h2>Add new ingredient</h2>
+<%= form_for :ingredient, url: ingredients_path do |f| %>
+  <% if @ingredient.errors.any? %>
+  <%@ingredient.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger"><%= msg %></div>
+  <% end %>
+  <% end %>
+<p>
+  Title<br>
+  <%= f.text_field(:title, {:class => 'form-control'}) %>
+</p>
+<p>
+  Produced on<br>
+  <%= f.date_field(:production_date, {:class => 'form-control'}) %>
+</p>
+<p>
+  Time u can store it<br>
+  <%= f.text_field(:storage_time, {:class => 'form-control'}) %>
+</p>
+<p>
+  <%= f.submit({:class => 'btn btn-success'}) %>
+</p>
+<% end %>

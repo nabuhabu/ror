@@ -1,0 +1,20 @@
+<table border="1">
+<tr>
+  <th>Назва</th>
+  <th>Вартість</th>
+  <th>Дата створення</th>
+  <th>Термін зберігання</th>
+  <th>Виробник</th>
+<th><%= link_to "Додати запис", new_item_path, :class =>'btn btn-success btn-sm'%></th>
+</tr>
+<% Item.all.each do |item| %>
+<tr>
+<td><%= item.name %></td>
+<td><%= item.price %></td>
+<td><%= item.production_date.strftime("%m/%d/%Y") %></td>
+<td><%= item.storage_time %></td>
+<td><%= item.creator.name %> </td>
+<td><%= link_to "Видалити", item_path(item.id), method: :delete, data:{confirm: "Видалити запис?"}, :class =>'btn btn-danger btn-sm'%></td>
+</tr>
+<% end %>
+</table>

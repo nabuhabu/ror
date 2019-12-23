@@ -1,0 +1,19 @@
+<table border="1">
+<tr>
+  <th>Назва</th>
+  <th>Дата реєстрації</th>
+  <th>Місто</th>
+  <th>Спеціалізація</th>
+  <th>Телефон</th>
+</tr>
+<% Creator.all.each do |creator| %>
+<tr>
+<td><%= creator.name %></td>
+<td><%= creator.registration_date.strftime("%m/%d/%Y") %></td>
+<td><%= creator.city %></td>
+<td><%= creator.specialization %></td>
+<td><%= creator.phone_number %> </td>
+
+</tr>
+<% end %>
+</table>

@@ -1,0 +1,6 @@
+<h1> <%= @ingredient.title %></h1>
+<p> <%= @ingredient.production_date %></p>
+<p> <%= @ingredient.storage_time %></p>
+<hr>
+<%= link_to "Edit", edit_ingredient_path(@ingredient), :class => 'btn btn-warning' %>
+<%= link_to "Delete", ingredient_path(@ingredient), method: :delete, data:{confirm: "R u sure u wanna delete it?"}, :class => 'btn btn-danger' %>

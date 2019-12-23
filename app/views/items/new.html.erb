@@ -1,0 +1,32 @@
+<h2>Add new item</h2>
+<%= form_for :item, url: items_path do |f| %>
+  <% if @item.errors.any? %>
+  <%@item.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger"><%= msg %></div>
+  <% end %>
+  <% end %>
+<p>
+  Назва<br>
+  <%= f.text_field(:name, {:class => 'form-control'}) %>
+</p>
+<p>
+  Ціна<br>
+  <%= f.number_field(:price, {:class => 'form-control'}) %>
+</p>
+<p>
+  Дата виробництва<br>
+  <%= f.date_field(:production_date, {:class => 'form-control'}) %>
+</p>
+<p>
+  Термін зберігання<br>
+  <%= f.number_field(:storage_time, {:class => 'form-control'}) %>
+</p>
+<p>
+  Виробник<br>
+   <%= f.collection_select :creator_id, Creator.order(:name), :id, :name, {:class => 'form-control'} %>
+</p>
+
+<p>
+  <%= f.submit({:class => 'btn btn-success'}) %>
+</p>
+<% end %>
