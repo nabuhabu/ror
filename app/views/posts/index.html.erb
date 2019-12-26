@@ -1,11 +1,113 @@
-<!-- <h1> All our Posts </h1>
-<% @post.each do |post| %>
-  <div class="alert alert-light">
-    <h3><%= post.title %></h3>
-    <h5> <%= post.user.email%> </h5>
-    <p><%= post.body %></p>
-    <%= link_to "Read more", post_path(post), :class=>'btn btn-outline-primary' %>
-  </div>
-<% end %> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-Опис буде...
+<div class="container">
+	<h2>Звіт про виконану роботу</h2>
+
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#home"><i class="icon-file" style="margin-right:5px;">
+				</i>Лабораторна 1</a></li>
+		<li><a data-toggle="tab" href="#menu1"><i class="icon-file" style="margin-right:5px;"> </i>Лабораторна 2</a>
+		</li>
+		<li><a data-toggle="tab" href="#menu2"><i class="icon-file" style="margin-right:5px;"> </i>Лабораторна 3</a>
+		</li>
+		<li><a data-toggle="tab" href="#menu3"><i class="icon-file" style="margin-right:5px;"> </i>Лабораторна 4</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+
+		<div id="home" class="tab-pane fade in active">
+			<h3><i class="icon-pushpin" style="margin-right:5px;"> </i> Мета </h3>
+			<p> Опанувати роботу менеджерів пакетів ОС Linux Ubuntu,
+				систему rvm для організації роботи ruby та rails,
+				менеджера пакета мови Ruby
+				та базові елементи мови Ruby при розробці програм.</p>
+			<h3><i class="icon-list-alt" style="margin-right:5px;"> </i> Виконані завдання </h3>
+			<div>
+				<p><i class="icon-ok" style="margin-right:5px;"></i>
+					За допомогою VMware Workstation було створено віртуальну машину
+					та встановлено на неї ОС Linux Ubuntu із завантаженого установочного образу.</p>
+				<p><i class="icon-ok" style="margin-right:5px;"></i>
+					Повторено користування програмами sudo та менеджером пакетів для ОС Linux Ubuntu APT
+					(sudo apt-get install, apt-cache search keywords, apt-cache show program, sudo apt-get remove
+					program та інші)</p>
+				<p><i class="icon-ok" style="margin-right:5px;"></i>
+					Опановано роботу з програмним інструментом RVM через його встановлення та налаштування,
+					встановлено інтерпретатор мови Ruby та її фреймворк Rails</p>
+				<p><i class="icon-ok" style="margin-right:5px;"></i>
+					Здобуто навички роботи з програмою-менеджером пакетів gem для Ruby,
+					встановлено необхідні для подальшої роботи пакети </p>
+			</div>
+		</div>
+
+		<div id="menu1" class="tab-pane fade">
+			<h3><i class="icon-pushpin" style="margin-right:5px;"> </i> Мета </h3>
+			<p> Навчитись використовувати та налагоджувати
+        необхідні сервіси для доступу до Rails-додатку через мережу Інтернет.</p>
+        <h3><i class="icon-list-alt" style="margin-right:5px;"> </i> Виконані завдання </h3>
+        <div>
+            <p><i class="icon-ok" style="margin-right:5px;"></i>
+            Повторено основи роботи із системою керування версіями Git.</p>
+          <p><i class="icon-ok" style="margin-right:5px;"></i>
+            Налаштовано середовище для розробки Rails-додатків
+та створено новий Rails додаток під управлінням системи контролю версій Git.</p>
+          <p><i class="icon-ok" style="margin-right:5px;"></i>
+            Згенеровано кілька ssh-ключів (тип RSA) за допомогою команд
+            <code>gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB<br>
+            \curl -sSL https://get.rvm.io | bash -s stable<br>
+            vi .bash_profile<br>
+            cd nabuhabu/.ssh<br>
+            ssh-keygen -t rsa -C "shulikaanastasia@gmail.com"</code></p>
+            <p><i class="icon-ok" style="margin-right:5px;"></i>
+              Здійснено реєстрацію на сервісі heroku.com та інстальовано Ruby бібліотеку heroku,
+  створено додаток та посилання на нього в системі Git,
+   відіслано його на сервіс heroku із локальної системи.</p>
+        </div>
+		</div>
+
+		<div id="menu2" class="tab-pane fade">
+			<h3><i class="icon-pushpin" style="margin-right:5px;"> </i> Мета </h3>
+			<p> Навчитись створювати
+        та здійснювати необхідні налаштовуння веб-додатків засобами Rails.</p>
+			<h3><i class="icon-list-alt" style="margin-right:5px;"> </i> Виконані завдання </h3>
+      <div>
+          <p><i class="icon-ok" style="margin-right:5px;"></i>
+          Визначено тему та спроектовано структуру бази даних.<br>
+          До складу бази даних входять 5 таблиць:<br>
+  Товар(код товару, його назва, ціна, дата виробництва, термін зберігання та виробник), <br>
+  Виробник(код виробника, назва, дата реєстрації, місто, для якої галузі виробляє продукцію, номер телефону), <br>
+  Замовник(код, ім'я, дата народження, професія, телефон, місто), <br>
+  Замовлення(код, товар, дата замовлення, кількість одиниць товару, замовник, вартість замовлення),<br>
+  Доставка(код замовлення, місто замовника, місто відправника, ціна доставки, ціна замовлення, сума до сплати разом)</p>
+        <p><i class="icon-ok" style="margin-right:5px;"></i>
+          Опановано систему міграцій, згенерувати відповідні контролери та моделі
+за допомогою використання scaffold-генератора,
+заповнити відповідні міграційні файли. Здобуто навички внесення змін в міграції,
+створенні та оновленні структури бази даних,
+налаштовано моделі для реалізації необхідних зв'язків.</p>
+        <p><i class="icon-ok" style="margin-right:5px;"></i>
+          Здобуто навички використання додаткових модулів, а саме Faker для заповнення бази даних тестовими даними.
+Реалізовано заповнення бази даних створенням відповідної rake-задачі.</p>
+      </div>
+    </div>
+
+		<div id="menu3" class="tab-pane fade">
+			<h3><i class="icon-pushpin" style="margin-right:5px;"> </i> Мета </h3>
+			<p> Навчитись організовувати адміністративну частину додатку. </p>
+			<h3><i class="icon-list-alt" style="margin-right:5px;"> </i> Виконані завдання </h3>
+      <div>
+          <p><i class="icon-ok" style="margin-right:5px;"></i>
+            Опрацьовано основи роботи із gem'ом devise, що застосовується для забезпечення автентифікації у додатках,
+  створених за допомогою ruby on rails. Виконано підключення
+  та всі необхідні налаштування для коректної роботи.</p>
+        <p><i class="icon-ok" style="margin-right:5px;"></i>
+          Забезпечено можливість редагування або видалення інформації
+лише авторизованим користувачам,
+а можливість перегляду - через загальнодоступну частину застосування.</p>
+      </div>
+
+		</div>
+	</div>
+</div>
