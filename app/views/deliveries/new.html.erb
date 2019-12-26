@@ -1,0 +1,19 @@
+<h2>Додати інформацію про доставку</h2>
+<%= form_for :delivery, url: deliveries_path do |f| %>
+  <% if @delivery.errors.any? %>
+  <%@delivery.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger"><%= msg %></div>
+  <% end %>
+  <% end %>
+  <p>
+    Код замовлення<br>
+     <%= f.collection_select :myorder_id, Myorder.order(:id), :id, :id, {:style => "height:35px;", :class => 'form-control'} %>
+  </p>
+  <p>
+    Ціна доставки<br>
+      <%= f.number_field(:price, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:style => "height:35px;", :class => 'btn btn-success'}) %>
+  </p>
+  <% end %>

@@ -1,19 +1,21 @@
-<table border="1">
-<tr>
-  <th>Назва</th>
-  <th>Дата реєстрації</th>
-  <th>Місто</th>
-  <th>Спеціалізація</th>
-  <th>Телефон</th>
-</tr>
-<% Creator.all.each do |creator| %>
-<tr>
-<td><%= creator.name %></td>
-<td><%= creator.registration_date.strftime("%m/%d/%Y") %></td>
-<td><%= creator.city %></td>
-<td><%= creator.specialization %></td>
-<td><%= creator.phone_number %> </td>
+<%= link_to "Додати запис", new_creator_path, :style=>"font-size:large; border-radius:5px;", :class =>'btn btn-success col-lg-12'%>
 
-</tr>
+<div class="card-group">
+  <% Creator.all.each do |creator| %>
+<div class="col-sm-4">
+  <div class="card bg-light mb-3" style="border-radius:5px; font-size:12px; margin:20px;">
+    <div class="card-body">
+      <span class="fa fa-user"></span>
+      <h5 class="card-title " style="text-shadow: 1px 1px 5px darkgrey; text-align:center; font-size:large; border-bottom: 1px solid lightgrey;"><i class="icon-ok" style="margin-right:5px;"> </i><%= creator.name %></h5>
+       <i class="icon-calendar" style="margin-right:5px;"> </i><strong>Дата реєстрації:</strong>   <%= creator.registration_date.strftime("%m/%d/%Y") %> <br>
+      <i class="icon-screenshot" style="margin-right:5px;"> </i> <strong>Місто:</strong> <%= creator.city %> <br>
+    <i class="icon-briefcase" style="margin-right:5px;"> </i>  <strong>Спеціалізація:</strong>   <%= creator.specialization %> міс. <br>
+      <i class="icon-phone" style="margin-right:5px;"> </i><strong>Телефон:</strong> <%= creator.phone_number %>
+      <br><br>
+      <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_creator_path(creator.id), :class =>'btn btn-warning col-lg-2 offset-4'%>
+        <%= link_to '<i class="icon-trash"></i>'.html_safe, creator_path(creator.id), method: :delete, data:{confirm: "Справді бажаєте видалити цей товар?"}, :class =>'btn btn-danger col-lg-2'%>
+    </div>
+  </div>
+</div>
 <% end %>
-</table>
+</div>

@@ -1,0 +1,27 @@
+<a><%= link_to "Додати запис", new_myorder_path, :style=>'font-size:large; border-radius:5px;',:class =>'col-lg-12 btn btn-success btn-sm'%></th>
+</a>
+<br><br><br>
+<table class="table table-hover table-bordered text-center">
+<tr class="thead-light">
+  <th style="text-align:center;">Назва товару</th>
+  <th style="text-align:center;">Дата замовлення</th>
+  <th style="text-align:center;">Кількість одиниць</th>
+  <th style="text-align:center;">Замовник</th>
+  <th style="text-align:center;">Виробник</th>
+  <th style="text-align:center;">Вартість замовлення</th>
+<th></th>
+<th></th>
+</tr>
+<% Myorder.all.each do |myorder| %>
+<tr>
+<td><%= myorder.item.try(:name)%></td>
+<td><%= myorder.order_date.strftime("%m/%d/%Y")%></td>
+<td><%= myorder.amount %></td>
+<td><%= myorder.myclient.try(:name) %> </td>
+<td><%= myorder.item.creator.try(:name) %> </td>
+<td><%= (myorder.amount.to_f*myorder.item.price.to_f).round(2) %></td>
+<td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_myorder_path(myorder.id), :class =>'btn btn-outline-warning btn-sm'%></td>
+<td>  <%= link_to '<i class="icon-trash"></i>'.html_safe, myorder_path(myorder.id), method: :delete, data:{confirm: "Видалити запис?"}, :class =>'btn btn-outline-danger btn-sm'%></td>
+</tr>
+<% end %>
+</table>

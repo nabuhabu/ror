@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191223174805) do
+ActiveRecord::Schema.define(version: 20191225101049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20191223174805) do
     t.string   "phone_number"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.float    "price"
+    t.integer  "myorder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["myorder_id"], name: "index_deliveries_on_myorder_id", using: :btree
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -44,6 +52,28 @@ ActiveRecord::Schema.define(version: 20191223174805) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["creator_id"], name: "index_items_on_creator_id", using: :btree
+  end
+
+  create_table "myclients", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "birth"
+    t.string   "company"
+    t.string   "phone_number"
+    t.string   "city"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "myorders", force: :cascade do |t|
+    t.float    "order_sum"
+    t.datetime "order_date"
+    t.integer  "amount"
+    t.integer  "myclient_id"
+    t.integer  "item_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["item_id"], name: "index_myorders_on_item_id", using: :btree
+    t.index ["myclient_id"], name: "index_myorders_on_myclient_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|

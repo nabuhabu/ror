@@ -1,0 +1,31 @@
+<h2>Створити нового замовника</h2>
+<%= form_for :myclient, url: myclients_path do |f| %>
+  <% if @myclient.errors.any? %>
+  <%@myclient.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger"><%= msg %></div>
+  <% end %>
+  <% end %>
+  <p>
+    Ім'я замовника<br>
+    <%= f.text_field(:name, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    Дата народження<br>
+    <%= f.date_field(:birth, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    Місце роботи<br>
+    <%= f.text_field(:company, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    Номер телефону<br>
+    <%= f.text_field(:phone_number, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    Місто<br>
+    <%= f.text_field(:city, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:style => "height:35px;", :class => 'btn btn-success'}) %>
+  </p>
+  <% end %>

@@ -6,6 +6,7 @@ class CreateCreators < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :specialization
       t.string :phone_number
+      t.belongs_to :myorder
 
       t.timestamps
     end

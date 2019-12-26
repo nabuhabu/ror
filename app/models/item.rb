@@ -1,9 +1,7 @@
 class Item < ApplicationRecord
     belongs_to :creator
-    validates :name, :presence => {:message => "Вкажіть назву"}
-# validates :color, :presence => {:message => "Вкажіть колір"}
-# validates :city_id, numericality: {greater_than: -1}
-# validates :sponsor_id, numericality: {greater_than: -1}
-# validates :budget, numericality: {greater_than: 0, :message => "Бюджет повинен бути більшим за 0"}
-# validates :year, numericality: {greater_than: 1900, :message => "Рік заснування повинен бути більшим за 1900"}
+    validates :name, :presence => {:message => "Вкажіть назву творіння"}
+    validates :price,  numericality: {greater_than: 0, :message => "Розкрийте вартість цього шедевру, ціна має бути більша за 0"}
+    validates :production_date, :presence => {:message => "Коли було створене це диво?"}
+    validates :storage_time, numericality: {greater_than: 0, :message => "Скільки місяців служитиме цей витвір?"}
 end

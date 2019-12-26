@@ -1,0 +1,32 @@
+<h2>Створення нового виробника</h2>
+<%= form_for :creator, url: creators_path do |f| %>
+  <% if @creator.errors.any? %>
+  <%@creator.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger"><%= msg %></div>
+  <% end %>
+  <% end %>
+<p>
+  Назва<br>
+  <%= f.text_field(:name, {:style =>"height:35px;", :class => 'form-control'}) %>
+</p>
+<p>
+  Дата реєстрації<br>
+  <%= f.date_field(:registration_date, {:style =>"height:35px;", :class => 'form-control'}) %>
+</p>
+<p>
+  Місто<br>
+  <%= f.text_field(:city, {:style =>"height:35px;", :class => 'form-control'}) %>
+</p>
+<p>
+  Спеціалізація<br>
+  <%= f.text_field(:specialization, {:style =>"height:35px;", :class => 'form-control'}) %>
+</p>
+<p>
+  Телефон<br>
+<%= f.text_field(:phone_number, {:style =>"height:35px;", :class => 'form-control'}) %>
+</p>
+
+<p>
+  <%= f.submit({:style =>"height:35px;", :class => 'btn btn-success'}) %>
+</p>
+<% end %>

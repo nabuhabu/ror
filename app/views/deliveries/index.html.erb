@@ -1,0 +1,27 @@
+<a><%= link_to "Додати запис", new_delivery_path,:style=>'font-size:large; border-radius:5px;', :class =>'col-lg-12 btn btn-success btn-lg'%></th>
+</a>
+<br><br><br>
+<table class="table table-hover table-bordered text-center">
+<tr class="thead-light">
+  <th style="text-align:center;">Код замовлення</th>
+  <th style="text-align:center;">Місто замовника</th>
+  <th style="text-align:center;">Місто відправника</th>
+  <th style="text-align:center;">Ціна доставки</th>
+  <th style="text-align:center;">Ціна замовлення</th>
+  <th style="text-align:center;">До сплати загалом</th>
+<th></th>
+<th></th>
+</tr>
+<% Delivery.all.each do |delivery| %>
+<tr>
+<td><%= delivery.myorder_id%></td>
+<td><%= delivery.myorder.myclient.city%></td>
+<td><%= delivery.myorder.item.creator.city %></td>
+<td><%= delivery.price %> </td>
+<td><%= delivery.myorder.item.price %> </td>
+<td><%= delivery.myorder.item.price.to_f+delivery.price.to_f %> </td>
+<td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_delivery_path(delivery.id), :class =>'btn btn-outline-warning btn-sm'%></td>
+<td>  <%= link_to '<i class="icon-trash"></i>'.html_safe, delivery_path(delivery.id), method: :delete, data:{confirm: "Видалити запис?"}, :class =>'btn btn-outline-danger btn-sm'%></td>
+</tr>
+<% end %>
+</table>

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+before_action :authenticate_user!, except: [:index, :show]
   def show
     @item = Items.find(params[:id])
   end
@@ -14,6 +14,19 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if(@item.update(item_params))                  #save in the table when validated
+    redirect_to Item
+    else
+    render 'edit' #if title not validated
+  end
   end
 
 

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Mylab" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Shu-r-shu" %></title>
     <%= csrf_meta_tags %>
 
 
@@ -39,40 +41,46 @@
   </head>
   <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-bold">Shu</h5>
+      <h5 class="my-0 mr-md-auto font-weight-bold">Shu-r-shu</h5>
       <nav class="my-2 my-md-0 mr-md-3">
-        <span class="p-2 text-dark"><%= link_to "Posts", home_path %></span>
-        <span class="p-2 text-dark"><%= link_to "About", about_path %></span>
-        <span class="p-2 text-dark"><%= link_to "Ingredients", ingredients_path %></span>
+        <span class="p-2 text-dark"><%= link_to "Головна", home_path %></span>
+        <span class="p-2 text-dark"><%= link_to "Товари", items_path %></span>
+        <span class="p-2 text-dark"><%= link_to "Виробники", creators_path %></span>
+        <span class="p-2 text-dark"><%= link_to "Замовники", myclients_path %></span>
+        <span class="p-2 text-dark"><%= link_to "Замовлення", myorders_path %></span>
+        <span class="p-2 text-dark"><%= link_to "Доставка", deliveries_path %></span>
       </nav>
-      <span class="p-2 text-dark"><%= link_to "Add post", new_post_path %></span>
+
        <% if !user_signed_in? %>
-      <span class="p-2 text-dark"><%= link_to "Sign up", new_user_registration_path %></span>
-      <span class="p-2 text-dark"><%= link_to "Sign in", new_user_session_path %></span>
+      <span class="p-2 text-dark"><%= link_to "Зареєструватися", new_user_registration_path %></span>
+      <span class="p-2 text-dark"><%= link_to "Увійти в систему", new_user_session_path %></span>
        <% else %>
-       <span class="p-2 text-dark"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></span>
-       <span class="p-2 text-dark"><%= current_user.email %></span>
+       <span class="p-2 text-dark"><%= link_to "Вийти", destroy_user_session_path, :method => :delete %></span>
+       <span class="p-2 text-dark">Раді вітати, <%= current_user.email %></span>
        <% end %>
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           <!-- <%= bootstrap_flash %> -->
           <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+       <!-- <p class="alert"><%= alert %></p> -->
 <!-- <span class="p-2 text-dark"><%= link_to "Add post", new_post_path %></span> -->
 
           <%= yield %>
         </div>
         <!-- <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+
+            <ul class="nav" style="display:contents;">
+
+              <li><%= link_to "Головна", home_path %></li>
+              <li><%= link_to "Товари", items_path %></li>
+              <li><%= link_to "Виробники", creators_path %></li>
+              <li><%= link_to "Замовники", myclients_path %></li>
+              <li><%= link_to "Замовлення", myorders_path %></li>
+              <li><%= link_to "Доставка", deliveries_path %></li>
             </ul>
           </div>
         </div> -->

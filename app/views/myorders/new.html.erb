@@ -1,0 +1,28 @@
+<h2>Додати нове замовлення</h2>
+<%= form_for :myorder, url: myorders_path do |f| %>
+  <% if @myorder.errors.any? %>
+  <%@myorder.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger"><%= msg %></div>
+  <% end %>
+  <% end %>
+  <p>
+    Назва товару<br>
+     <%= f.collection_select :item_id, Item.order(:name), :id, :name, {:class => 'form-control'} %>
+  </p>
+  <p>
+    Дата замовлення<br>
+    <%= f.date_field(:order_date, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    Кількість одиниць<br>
+    <%= f.number_field(:amount, {:style => "height:35px;", :class => 'form-control'}) %>
+  </p>
+  <p>
+    Замовник<br>
+     <%= f.collection_select :myclient_id, Myclient.order(:name), :id, :name, {:style => "height:35px;", :class => 'form-control'} %>
+  </p>
+
+  <p>
+    <%= f.submit({:style => "height:35px;", :class => 'btn btn-success'}) %>
+  </p>
+  <% end %>

@@ -1,20 +1,21 @@
-<table border="1">
-<tr>
-  <th>Назва</th>
-  <th>Вартість</th>
-  <th>Дата створення</th>
-  <th>Термін зберігання</th>
-  <th>Виробник</th>
-<th><%= link_to "Додати запис", new_item_path, :class =>'btn btn-success btn-sm'%></th>
-</tr>
-<% Item.all.each do |item| %>
-<tr>
-<td><%= item.name %></td>
-<td><%= item.price %></td>
-<td><%= item.production_date.strftime("%m/%d/%Y") %></td>
-<td><%= item.storage_time %></td>
-<td><%= item.creator.name %> </td>
-<td><%= link_to "Видалити", item_path(item.id), method: :delete, data:{confirm: "Видалити запис?"}, :class =>'btn btn-danger btn-sm'%></td>
-</tr>
+<%= link_to "Додати запис", new_item_path, :style=>"font-size:large; border-radius:5px;", :class =>'btn btn-success col-lg-12'%>
+
+<div class="card-group">
+  <% Item.all.each do |item| %>
+<div class="col-sm-4">
+  <div class="card bg-light mb-3" style="border-radius:5px; font-size:12px; margin:20px;">
+    <div class="card-body">
+      <span class="fa fa-user"></span>
+      <h5 class="card-title " style="text-shadow: 1px 1px 5px darkgrey; text-align:center; font-size:large; border-bottom: 1px solid lightgrey;"><i class="icon-ok" style="margin-right:5px;"> </i><%= item.name %></h5>
+      <i class="icon-euro" style="margin-right:5px;"> </i> <strong>Вартість:</strong> <%= item.price %> <br>
+       <i class="icon-calendar" style="margin-right:5px;"> </i><strong>Дата створення:</strong>   <%= item.production_date.strftime("%m/%d/%Y") %> <br>
+    <i class="icon-calendar" style="margin-right:5px;"> </i>  <strong>Термін зберігання:</strong>   <%= item.storage_time %> міс. <br>
+      <i class="icon-briefcase" style="margin-right:5px;"> </i><strong>Виробник:</strong> <%= item.creator.try(:name) %>
+      <br><br>
+      <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_item_path(item.id), :class =>'btn btn-warning col-lg-2 offset-4'%>
+        <%= link_to '<i class="icon-trash"></i>'.html_safe, item_path(item.id), method: :delete, data:{confirm: "Справді бажаєте видалити цей товар?"}, :class =>'btn btn-danger col-lg-2'%>
+    </div>
+  </div>
+</div>
 <% end %>
-</table>
+</div>
