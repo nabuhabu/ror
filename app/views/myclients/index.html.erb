@@ -1,6 +1,6 @@
 <%= link_to "Додати запис", new_myclient_path, :style=>"font-size:large; border-radius:5px;", :class =>'btn btn-success col-lg-12'%>
 
-<div class="card-group">
+<div class="card-group" style="display:contents;">
   <% Myclient.all.each do |myclient| %>
 <div class="col-sm-4">
   <div class="card bg-light mb-3" style="border-radius:5px; font-size:12px; margin:20px;">
